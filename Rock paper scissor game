@@ -1,0 +1,66 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+    srand(time(0)); // Seed for random number generator
+
+    // Displaying game instructions
+    cout << "Let's play Rock, Paper, Scissors!\n";
+    cout << "Enter your choice:\n";
+    cout << "0: Rock\n1: Paper\n2: Scissors\n";
+
+    int playerChoice;
+    cout << "Your choice: ";
+    cin >> playerChoice;
+
+    // Checking if the player's choice is valid
+    if (playerChoice < 0 || playerChoice > 2) {
+        cout << "Invalid choice! Please choose again.\n";
+        return 1;
+    }
+
+    // Generating computer's choice
+    int computerChoice = rand() % 3;
+
+    // Displaying choices
+    cout << "Your choice: ";
+    switch (playerChoice) {
+        case 0:
+            cout << "Rock\n";
+            break;
+        case 1:
+            cout << "Paper\n";
+            break;
+        case 2:
+            cout << "Scissors\n";
+            break;
+    }
+
+    cout << "Computer's choice: ";
+    switch (computerChoice) {
+        case 0:
+            cout << "Rock\n";
+            break;
+        case 1:
+            cout << "Paper\n";
+            break;
+        case 2:
+            cout << "Scissors\n";
+            break;
+    }
+
+    // Determining the winner
+    if (playerChoice == computerChoice) {
+        cout << "It's a tie!\n";
+    } else if ((playerChoice == 0 && computerChoice == 2) ||
+               (playerChoice == 1 && computerChoice == 0) ||
+               (playerChoice == 2 && computerChoice == 1)) {
+        cout << "You win!\n";
+    } else {
+        cout << "Computer wins!\n";
+    }
+
+    return 0;
+}
