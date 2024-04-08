@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class TypingSpeedCalculator {
+
+    public static void main(String[] args) {
+        String paragraph = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. " +
+                           "Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis " +
+                           "sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. " +
+                           "Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per " +
+                           "conubia nostra, per inceptos himenaeos.";
+
+        System.out.println("Type the following paragraph: ");
+        System.out.println(paragraph);
+        System.out.println("Press Enter when you are done typing.");
+
+        Scanner scanner = new Scanner(System.in);
+        String typedText = scanner.nextLine();
+
+        long startTime = System.currentTimeMillis();
+
+        // Wait for user to press Enter
+        while (!scanner.nextLine().isEmpty()) {
+            System.out.println("Press Enter when you are done typing.");
+        }
+
+        long endTime = System.currentTimeMillis();
+
+        double timeTakenSeconds = (endTime - startTime) / 1000.0;
+
+        // Calculate number of words in the paragraph
+        String[] wordsInParagraph = paragraph.split("\\s+");
+        int numberOfWords = wordsInParagraph.length;
+
+        // Calculate number of words typed
+        String[] wordsTyped = typedText.split("\\s+");
+        int wordsTypedCount = wordsTyped.length;
+
+        // Calculate words per minute (WPM)
+        double wordsPerMinute = (wordsTypedCount / timeTakenSeconds) * 60;
+
+        System.out.println("Your typing speed is " + wordsPerMinute + " words per minute.");
+
+        scanner.close();
+    }
+}
